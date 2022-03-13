@@ -11,4 +11,9 @@ public class FormatServiceConstructorInjection {
     public void checkFormatted() {
         System.out.println(this.formatUtil.formatted(true));
     }
+
+    @Autowired
+    public FormatServiceConstructorInjection(FormatUtil formatUtil) {
+        this.formatUtil = formatUtil;
+    }
 }

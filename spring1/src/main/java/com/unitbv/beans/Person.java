@@ -8,4 +8,8 @@ public class Person implements Human {
     public Item getItem() {
         return item;
     }
+
+    public Person(Item item) {
+        this.item = item;
+    }
 }

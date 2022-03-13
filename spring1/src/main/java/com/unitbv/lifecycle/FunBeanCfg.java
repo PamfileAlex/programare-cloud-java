@@ -1,5 +1,6 @@
 package com.unitbv.lifecycle;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -8,7 +9,15 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(basePackages = {"com.unitbv.lifecycle"})
 public class FunBeanCfg {
 
-    FunBean funBean() {
-        return new FunBean();
+    @Bean
+    DepBean depBean() {
+        return new DepBean();
+    }
+
+    @Bean(initMethod = "init", destroyMethod = "delete")
+    FunBean funBean(DepBean depBean) {
+        FunBean funBean = new FunBean();
+        funBean.setDepBean(depBean);
+        return funBean;
     }
 }
